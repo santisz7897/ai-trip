@@ -28,6 +28,7 @@ A Telegram bot application designed to provide comprehensive, personalized trave
 ### Prerequisites
 
 - Python 3.10+ 
+- [uv](https://github.com/astral-sh/uv) - Fast Python package installer and resolver
 - [Ollama](https://ollama.ai/) for local LLM (optional)
 - Telegram bot token (from BotFather)
 - API keys for Google Maps, OpenWeatherMap, etc.
@@ -40,15 +41,19 @@ A Telegram bot application designed to provide comprehensive, personalized trave
    cd japan-honeymoon-travel-assistant
    ```
 
-2. Create and activate a virtual environment
+2. Create and activate a virtual environment using uv
    ```
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   uv venv .venv
+   source .venv/bin/activate  # On Windows: .venv\Scripts\activate
    ```
 
-3. Install dependencies
+3. Install dependencies using uv
    ```
-   pip install -r requirements.txt
+   # Install from lock file (recommended for reproducible builds)
+   uv pip install -r requirements.lock
+   
+   # Or install dependencies with development tools
+   uv pip install -e ".[dev]"
    ```
 
 4. Create a `.env` file based on the example
@@ -56,6 +61,25 @@ A Telegram bot application designed to provide comprehensive, personalized trave
    cp .env.example .env
    # Edit .env with your API keys and configuration
    ```
+
+### Managing Dependencies
+
+This project uses uv for dependency management:
+
+- Add a new dependency:
+  ```
+  uv pip install package_name
+  ```
+
+- Update the lock file after changing pyproject.toml:
+  ```
+  uv pip compile pyproject.toml -o requirements.lock
+  ```
+
+- Install all dependencies from lock file:
+  ```
+  uv pip install -r requirements.lock
+  ```
 
 ### Running the Application
 
