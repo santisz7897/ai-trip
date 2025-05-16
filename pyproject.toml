@@ -62,6 +62,5 @@ python_files = "test_*.py"
 addopts = "--cov=app --cov-report=term-missing"
 
 [tool.uv]
-python = "3.11"
 lockfile = "requirements.lock"
-first-party-dependencies = ["japan-honeymoon-travel-assistant"] 
+python-preference = "3.11" 
