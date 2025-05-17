@@ -22,6 +22,7 @@ A Telegram bot application designed to provide comprehensive, personalized trave
   - Google Maps
   - OpenWeatherMap
   - Translation services
+- **Deployment**: Docker
 
 ## Setup
 
@@ -32,6 +33,7 @@ A Telegram bot application designed to provide comprehensive, personalized trave
 - [Ollama](https://ollama.ai/) for local LLM (optional)
 - Telegram bot token (from BotFather)
 - API keys for Google Maps, OpenWeatherMap, etc.
+- Docker and Docker Compose (optional, for containerized deployment)
 
 ### Installation
 
@@ -83,6 +85,8 @@ This project uses uv for dependency management:
 
 ### Running the Application
 
+#### Local Development
+
 1. Start the API server
    ```
    python -m app.main
@@ -91,6 +95,41 @@ This project uses uv for dependency management:
 2. In a separate terminal, run the Telegram bot (when implemented)
    ```
    python -m app.bot
+   ```
+
+#### Using Docker
+
+1. Build and start containers
+   ```
+   docker-compose up -d
+   ```
+
+   This will start the API server on port 8000. You can access it at http://localhost:8000.
+
+2. View logs
+   ```
+   docker-compose logs -f
+   ```
+
+3. Stop containers
+   ```
+   docker-compose down
+   ```
+
+4. Rebuild containers after changes
+   ```
+   docker-compose up -d --build
+   ```
+
+5. Using Ollama with Docker (optional)
+   - Uncomment the Ollama service in docker-compose.yml
+   - Make sure your .env file has USE_LOCAL_LLM=True and OLLAMA_BASE_URL=http://ollama:11434
+   ```
+   docker-compose up -d
+   ```
+   - Pull your preferred model:
+   ```
+   docker-compose exec ollama ollama pull llama3
    ```
 
 ## Development

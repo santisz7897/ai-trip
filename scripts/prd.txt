@@ -1,74 +1,479 @@
-# Japan Honeymoon Travel Assistant PRD
+Japan Honeymoon Travel Assistant
+Product Requirements Document (PRD)
+Document Version: 1.0
+Last Updated: May 16, 2025
+Author: Santiago
+Status: Draft
 
-## Overview
-The Japan Honeymoon Travel Assistant is a Telegram bot application designed to provide comprehensive, personalized travel assistance for honeymooners visiting Japan. The assistant will help users plan their trip, navigate around Japan, understand cultural customs, translate phrases, check weather conditions, find points of interest, and handle emergency situations.
+1. Introduction
+1.1 Purpose
+The Japan Honeymoon Travel Assistant is a personalized AI-powered application designed to help travelers plan, navigate, and enjoy their honeymoon in Japan. It provides real-time assistance, recommendations, translations, and practical information through a conversational interface accessible via Telegram.
 
-## Core Features
+1.2 Product Overview
+The application combines AI language model capabilities with location services, translation, weather forecasting, and travel information to create a comprehensive travel companion. The assistant helps users discover locations, navigate public transportation, understand cultural norms, translate phrases, and access relevant information during their trip to Japan.
 
-### Telegram Bot Interface
-- Implement a Telegram bot that users can interact with through natural language
-- Support slash commands for quick access to common features
-- Properly format responses for optimal viewing on Telegram
+1.3 Business Objectives
+Provide a cost-effective travel assistant solution for personal use during a honeymoon trip to Japan
+Create a reusable framework for AI-powered travel assistance that can be expanded to other destinations
+Develop practical knowledge of AI application development and LLM integration
+Keep operational costs minimal by leveraging free and open-source options
+1.4 Success Metrics
+Application successfully deployed before honeymoon departure date
+Ability to answer 90%+ of common Japan travel queries accurately
+Functional location, translation, and weather services
+Consistent response time under 5 seconds
+Zero critical failures during the trip
+Minimal operational costs (under $10/month)
+2. Target Users and Use Cases
+2.1 Primary User
+English-speaking couple on honeymoon in Japan
+Limited Japanese language proficiency
+Intermediate to advanced smartphone users
+Interest in experiencing authentic Japanese culture, cuisine, and attractions
+2.2 Key Use Cases
+2.2.1 Pre-Trip Planning
+UC-01: User requests recommendations for must-visit locations in a specific city
+UC-02: User asks for ideal itinerary suggestions based on interests and time constraints
+UC-03: User inquires about cultural etiquette and customs to observe
+UC-04: User needs information about transportation options between cities
+UC-05: User wants to learn basic Japanese phrases for travel
+2.2.2 During Trip Navigation
+UC-06: User needs directions to a specific location from current position
+UC-07: User requests information about nearby points of interest
+UC-08: User needs help understanding public transportation routes and schedules
+UC-09: User wants recommendations for local restaurants near current location
+UC-10: User requires emergency information (hospitals, police, embassy)
+2.2.3 Language Assistance
+UC-11: User needs translation of a specific English phrase to Japanese
+UC-12: User wants to understand a Japanese menu or sign (future feature - image recognition)
+UC-13: User requires common phrases for specific situations (restaurant, hotel, shopping)
+2.2.4 General Information
+UC-14: User inquires about weather conditions for planning daily activities
+UC-15: User asks about operating hours for attractions or businesses
+UC-16: User needs information about cultural events or festivals occurring during their stay
+UC-17: User wants recommendations based on current weather conditions
+UC-18: User requires information about local customs or etiquette in specific situations
+3. User Requirements
+3.1 Core User Requirements
+REQ-01: Users must be able to interact with the assistant through natural language via Telegram
+REQ-02: Users must receive accurate information about Japanese locations, customs, and travel logistics
+REQ-03: Users must be able to get location-aware recommendations and directions
+REQ-04: Users must be able to access basic Japanese translations for common phrases
+REQ-05: Users must receive weather information for planning daily activities
+REQ-06: Users must be able to ask follow-up questions and have the system maintain context
+REQ-07: Users must be able to access the system with minimal internet bandwidth (typical for travel situations)
+REQ-08: Users must be able to receive responses within 5 seconds for most queries
+3.2 Detailed User Stories
+Pre-Trip Planning
+US-01: As a traveler, I want to get recommendations for must-visit locations in Tokyo, so I can plan my itinerary efficiently.
+Acceptance Criteria:
+System provides 3-5 recommendations tailored to specified interests
+Each recommendation includes a brief description and practical visiting information
+System offers to provide more detailed information about any recommendation
+US-02: As a traveler, I want to understand the most efficient ways to travel between major cities, so I can optimize my time in Japan.
+Acceptance Criteria:
+System provides information about bullet trains, flights, and buses between specified cities
+Information includes approximate travel times and general cost ranges
+System offers advice on whether to purchase a Japan Rail Pass based on the itinerary
+During Trip Assistance
+US-03: As a traveler, I want to get directions to a specific attraction from my current location, so I can navigate efficiently.
+Acceptance Criteria:
+System accepts current location (manually entered or GPS-based) and destination
+Provides clear, step-by-step directions using public transportation or walking
+Includes estimated travel time and any relevant transit information
+US-04: As a traveler, I want recommendations for restaurants near my current location that serve specific Japanese cuisine, so I can experience authentic food.
+Acceptance Criteria:
+System accepts cuisine type and proximity parameters
+Provides 3-5 restaurant recommendations with cuisine information and approximate price range
+Includes any notable specialties or menu recommendations
+Language Assistance
+US-05: As a traveler, I want to translate common phrases from English to Japanese, so I can communicate with locals.
+Acceptance Criteria:
+System accurately translates requested phrase
+Provides both Japanese characters and phonetic pronunciation
+Offers context-appropriate usage tips when relevant
+General Information
+US-06: As a traveler, I want to check the weather forecast for my current location for the next 3 days, so I can plan activities accordingly.
+Acceptance Criteria:
+System provides daily weather forecasts including temperature, precipitation probability, and general conditions
+Offers suggestions for weather-appropriate activities
+Warns about any extreme weather conditions
+4. Functional Requirements
+4.1 Conversational Interface
+FR-01: The system must provide a conversational interface through Telegram.
+FR-02: The system must understand natural language queries related to Japan travel.
+FR-03: The system must maintain conversation context for at least 10 message exchanges.
+FR-04: The system must handle basic follow-up questions without requiring full context reestablishment.
+FR-05: The system must provide responses formatted appropriately for Telegram (text, limited markdown).
+FR-06: The system must support slash commands for common functions (/weather, /translate, /nearby, etc.).
+4.2 Knowledge Base
+FR-07: The system must contain information about major Japanese cities and tourist destinations.
+FR-08: The system must provide accurate information about Japanese customs and etiquette.
+FR-09: The system must include data about major transportation options in Japan.
+FR-10: The system must contain information about common Japanese dishes and cuisine types.
+FR-11: The system must provide practical travel tips relevant to specific locations.
+FR-12: The system must include information about seasonal events and festivals.
+4.3 Location Services
+FR-13: The system must accept location information via text input (city, address, landmark name).
+FR-14: The system must provide directions between specified locations using Google Maps data.
+FR-15: The system must recommend points of interest near a specified location.
+FR-16: The system must provide basic information about public transportation options between locations.
+FR-17: The system must support future enhancement for GPS location sharing (optional for MVP).
+4.4 Translation Services
+FR-18: The system must translate common English phrases to Japanese (text).
+FR-19: The system must provide phonetic pronunciations for translated Japanese phrases.
+FR-20: The system must include pre-translated common travel phrases to reduce API usage.
+FR-21: The system must support translation of specific types of items (menu items, transportation terms, etc.).
+4.5 Weather Information
+FR-22: The system must provide current weather conditions for major Japanese cities.
+FR-23: The system must provide 3-5 day weather forecasts for specified locations.
+FR-24: The system must offer activity recommendations based on weather conditions.
+FR-25: The system must alert users about extreme weather conditions (heavy rain, typhoons, etc.).
+4.6 Error Handling and Fallbacks
+FR-26: The system must gracefully handle queries outside its knowledge domain.
+FR-27: The system must inform users when it cannot fulfill specific requests and why.
+FR-28: The system must offer alternative suggestions when exact requests cannot be met.
+FR-29: The system must have fallback mechanisms for when external APIs are unavailable.
+FR-30: The system must log errors for review and improvement without exposing technical details to users.
+5. Technical Requirements
+5.1 System Architecture
+TR-01: The system must use FastAPI for the backend application framework.
+TR-02: The system must implement a modular architecture separating core functions into distinct services.
+TR-03: The system must use asynchronous programming patterns for handling concurrent requests.
+TR-04: The system must implement proper exception handling throughout all components.
+TR-05: The system must maintain separation between business logic and external service integrations.
+TR-06: The system must be designed to allow future expansion to an agent-based architecture.
+5.2 LLM Integration
+TR-07: The system must integrate with an LLM for natural language understanding and generation.
+TR-08: The system must optimize prompts for travel assistance scenarios.
+TR-09: The system must implement context management for multi-turn conversations.
+TR-10: The system must support both local (Ollama) and cloud-based LLM options for flexibility.
+TR-11: The system must implement efficient token usage strategies to minimize costs.
+TR-12: The system must fine-tune or augment the LLM with Japan-specific travel information.
+5.3 External API Integrations
+TR-13: The system must integrate with Google Maps API for location services.
+TR-14: The system must integrate with a weather API (OpenWeatherMap) for forecasts.
+TR-15: The system must integrate with Google Translate or equivalent for translation services.
+TR-16: The system must implement proper API key management and security.
+TR-17: The system must implement caching strategies to minimize external API calls.
+TR-18: The system must gracefully handle API rate limiting and service disruptions.
+5.4 Data Storage and Management
+TR-19: The system must implement appropriate data storage for conversation history.
+TR-20: The system must store essential Japan travel information in an efficient format.
+TR-21: The system must implement proper data sanitization for all user inputs.
+TR-22: The system must maintain user session data securely.
+TR-23: The system must implement efficient cache invalidation strategies for time-sensitive data.
+TR-24: The system must support data updates without requiring system restart.
+5.5 Telegram Bot Integration
+TR-25: The system must implement a Telegram bot using the python-telegram-bot library.
+TR-26: The system must handle Telegram API webhooks efficiently.
+TR-27: The system must support basic Telegram message formatting options.
+TR-28: The system must implement proper error handling for Telegram API interactions.
+TR-29: The system must support future enhancement for rich media responses (images, maps, etc.).
+TR-30: The system must handle multiple concurrent user conversations properly.
+5.6 Performance Requirements
+TR-31: The system must respond to user queries within 5 seconds under normal conditions.
+TR-32: The system must support at least 1,000 messages per day without degradation.
+TR-33: The system must implement timeouts for external service calls (10 seconds maximum).
+TR-34: The system must operate within the resource constraints of free-tier hosting solutions.
+TR-35: The system must implement response caching for common queries where appropriate.
+TR-36: The system must optimize database queries for minimal latency.
+5.7 Security Requirements
+TR-37: The system must securely store all API keys and credentials.
+TR-38: The system must implement input validation for all user-provided data.
+TR-39: The system must not store personally identifiable information beyond session requirements.
+TR-40: The system must implement appropriate logging without exposing sensitive information.
+TR-41: The system must use HTTPS for all external communications.
+TR-42: The system must implement authentication for administrative functions (if any).
+6. User Interface Requirements
+6.1 Telegram Interface
+UI-01: The system must provide a simple welcome message explaining available capabilities upon first interaction.
+UI-02: The system must format responses with clear organization (headings, bullet points) where appropriate.
+UI-03: The system must implement slash commands for common functions (/help, /weather, /translate, etc.).
+UI-04: The system must provide natural conversation flow with appropriate response length.
+UI-05: The system must include conversation markers to indicate when it's processing complex requests.
+UI-06: The system must format special information (translations, directions, weather) in a visually distinct way.
+6.2 Response Formatting
+UI-07: Location recommendations must include name, brief description, and practical information.
+UI-08: Translations must show both Japanese characters and phonetic pronunciations.
+UI-09: Weather information must be formatted with clear temperature, conditions, and relevant advice.
+UI-10: Directions must be presented as numbered steps with clear transition points.
+UI-11: Lists of recommendations must be clearly numbered with concise descriptions.
+UI-12: Error messages must be friendly and suggest alternatives or clarification.
+7. Data Requirements
+7.1 Japan Travel Knowledge Base
+DR-01: The system must include data on major cities (Tokyo, Kyoto, Osaka, Hiroshima, Sapporo, Nara, etc.).
+DR-02: The system must contain information about top tourist attractions in each major city.
+DR-03: The system must include data on transportation options (bullet trains, subway systems, buses).
+DR-04: The system must contain information about Japanese customs and etiquette.
+DR-05: The system must include data on Japanese cuisine and common dishes.
+DR-06: The system must contain information about seasonal events and festivals.
+7.2 Context Management
+DR-07: The system must store conversation history for context management.
+DR-08: The system must track user preferences based on previous interactions.
+DR-09: The system must maintain conversation state between sessions.
+DR-10: The system must implement appropriate context window management for LLM interactions.
+7.3 Caching
+DR-11: The system must cache weather data for 3 hours to reduce API calls.
+DR-12: The system must cache translation results for common phrases.
+DR-13: The system must cache location data and points of interest to reduce Google Maps API usage.
+DR-14: The system must implement cache invalidation for time-sensitive information.
+7.4 User Data
+DR-15: The system must store minimal user data required for functionality.
+DR-16: The system must not persist sensitive user information beyond session requirements.
+DR-17: The system must implement appropriate data retention policies.
+8. Integration Requirements
+8.1 Google Maps Integration
+IR-01: The system must integrate with Google Maps Places API for location information.
+IR-02: The system must integrate with Google Maps Directions API for navigation assistance.
+IR-03: The system must use Google Maps Geocoding API to convert location names to coordinates.
+IR-04: The system must implement caching to minimize Google Maps API calls.
+IR-05: The system must handle Google Maps API errors gracefully with fallback options.
+8.2 Weather API Integration
+IR-06: The system must integrate with OpenWeatherMap API for weather forecasts.
+IR-07: The system must retrieve current weather conditions for specified locations.
+IR-08: The system must retrieve 5-day forecasts for trip planning.
+IR-09: The system must implement caching of weather data (3-hour refresh).
+IR-10: The system must convert weather data into user-friendly recommendations.
+8.3 Translation API Integration
+IR-11: The system must integrate with Google Cloud Translation API for language translation.
+IR-12: The system must implement pre-translated common phrases to reduce API usage.
+IR-13: The system must provide both Japanese characters and romanized pronunciation.
+IR-14: The system must cache translation results for common phrases.
+IR-15: The system must handle translation API errors gracefully.
+8.4 LLM Integration
+IR-16: The system must integrate with Ollama for local LLM deployment options.
+IR-17: The system must support integration with cloud-based LLM APIs (Hugging Face, OpenAI, etc.).
+IR-18: The system must implement appropriate prompting strategies for travel assistance.
+IR-19: The system must handle LLM token limits and context windows appropriately.
+IR-20: The system must have fallback options for LLM service disruptions.
+8.5 Telegram Bot Integration
+IR-21: The system must integrate with Telegram Bot API using python-telegram-bot library.
+IR-22: The system must implement webhook handling for Telegram updates.
+IR-23: The system must support text message formatting options available in Telegram.
+IR-24: The system must handle Telegram API rate limits appropriately.
+IR-25: The system must process updates asynchronously to prevent blocking.
+9. Constraints and Limitations
+9.1 Technical Constraints
+CL-01: The system must operate within free tier limits of cloud hosting platforms.
+CL-02: The system must minimize LLM token usage to reduce costs.
+CL-03: The system must operate within Google Maps API free tier limits ($200/month credit).
+CL-04: The system must function with possible intermittent internet connectivity.
+CL-05: The system must operate without requiring significant local computational resources.
+9.2 Business Constraints
+CL-06: The system must be developed within the available evening hours (2-3 hours per day).
+CL-07: The system must be completed before the honeymoon departure date.
+CL-08: The system must operate at minimal cost (target under $10/month).
+CL-09: The system must be designed for personal use only, not commercial deployment.
+9.3 Known Limitations
+CL-10: The system will not support voice input or output in the MVP.
+CL-11: The system will not provide real-time language translation of images in the MVP.
+CL-12: The system will have limited offline functionality.
+CL-13: The system will not support automatic reservation functions in the MVP.
+CL-14: The system will have knowledge limited to major tourist areas and common scenarios.
+10. Non-Functional Requirements
+10.1 Performance
+NFR-01: The system must respond to simple queries within 3 seconds.
+NFR-02: The system must respond to complex queries requiring API calls within 8 seconds.
+NFR-03: The system must handle at least 1,000 messages per day without degradation.
+NFR-04: The system must maintain 99% uptime during the honeymoon period.
+NFR-05: The system must efficiently manage memory usage to operate within free tier limitations.
+10.2 Usability
+NFR-06: The system must understand natural language queries with 90%+ accuracy for travel-related topics.
+NFR-07: The system must provide contextually appropriate responses that directly address user queries.
+NFR-08: The system must offer helpful alternatives when it cannot fulfill specific requests.
+NFR-09: The system must maintain conversational context across multiple interactions.
+NFR-10: The system must respond in a friendly, helpful tone appropriate for a travel assistant.
+10.3 Reliability
+NFR-11: The system must implement appropriate error handling and recovery mechanisms.
+NFR-12: The system must have fallbacks for external service failures.
+NFR-13: The system must log errors for troubleshooting without exposing technical details to users.
+NFR-14: The system must maintain data integrity across restarts and service interruptions.
+NFR-15: The system must implement appropriate monitoring for critical failures.
+10.4 Security
+NFR-16: The system must securely store all API keys and credentials.
+NFR-17: The system must implement input validation for all user-provided data.
+NFR-18: The system must not store personally identifiable information beyond session requirements.
+NFR-19: The system must use secure communication channels for all external interactions.
+NFR-20: The system must implement appropriate authentication for administrative functions.
+11. Development Roadmap and Milestones
+11.1 Phase 1: Foundation (Weeks 1-2)
+MS-01: Project setup and development environment configuration
+MS-02: Basic FastAPI application structure implemented
+MS-03: Telegram bot skeleton created and connected
+MS-04: Basic LLM integration established
+MS-05: Initial database schema for Japan travel information defined
+11.2 Phase 2: Core Functionality (Weeks 3-4)
+MS-06: Japan travel knowledge base populated with essential information
+MS-07: LLM prompt engineering and context management implemented
+MS-08: Basic conversation flows established
+MS-09: Google Maps API integration for location information
+MS-10: Basic translation functionality implemented
+11.3 Phase 3: Enhanced Features (Weeks 5-6)
+MS-11: Weather API integration completed
+MS-12: Advanced location services (directions, nearby places)
+MS-13: Enhanced translation with pre-translated phrases
+MS-14: Improved conversation context management
+MS-15: Error handling and fallback mechanisms implemented
+11.4 Phase 4: Refinement and Deployment (Weeks 7-8)
+MS-16: Performance optimization and caching implementation
+MS-17: Comprehensive testing and bug fixing
+MS-18: Documentation completion
+MS-19: Deployment to production environment
+MS-20: Final testing in real-world scenarios
+12. Testing Requirements
+12.1 Functional Testing
+TST-01: Test all conversation flows for expected responses
+TST-02: Verify accuracy of Japan travel information
+TST-03: Test Google Maps integration for location information
+TST-04: Verify translation functionality
+TST-05: Test weather information retrieval and formatting
+12.2 Performance Testing
+TST-06: Measure response times for various query types
+TST-07: Test system behavior under sustained usage
+TST-08: Verify memory usage patterns
+TST-09: Test API rate limit handling
+TST-10: Verify caching effectiveness
+12.3 Error Handling Testing
+TST-11: Test system response to invalid inputs
+TST-12: Verify behavior when external APIs are unavailable
+TST-13: Test recovery from various error conditions
+TST-14: Verify logging of errors without exposing details to users
+TST-15: Test fallback mechanisms for critical functions
+12.4 User Acceptance Testing
+TST-16: Verify system responses meet user expectations
+TST-17: Test with non-technical users for usability
+TST-18: Verify response quality for various travel scenarios
+TST-19: Test in conditions simulating actual travel use (intermittent connectivity)
+TST-20: Verify overall user experience meets requirements
+13. Technical Architecture
+13.1 High-Level Architecture Diagram
++------------------+     +------------------+     +------------------+
+|                  |     |                  |     |                  |
+|  Telegram Bot    |<--->|  FastAPI Backend |<--->|  LLM Service     |
+|  Interface       |     |  (Core Logic)    |     |  (Ollama/Cloud)  |
+|                  |     |                  |     |                  |
++------------------+     +------------------+     +------------------+
+                               ^      ^
+                               |      |
+                 +-------------+      +-------------+
+                 |                                  |
+        +------------------+                +------------------+
+        |                  |                |                  |
+        |  External APIs   |                |  Japan Travel    |
+        |  (Maps/Weather/  |                |  Knowledge Base  |
+        |   Translation)   |                |                  |
+        +------------------+                +------------------+
+13.2 Component Description
+13.2.1 Telegram Bot Interface
+Handles user interaction through Telegram
+Processes incoming messages and commands
+Formats responses appropriately for Telegram
+Manages conversation session data
+13.2.2 FastAPI Backend
+Core application logic
+Routes requests to appropriate services
+Orchestrates interaction between components
+Implements business logic and rules
+Manages caching and optimization
+13.2.3 LLM Service
+Processes natural language understanding
+Generates appropriate responses
+Maintains conversation context
+Implements prompt engineering
+Handles token management and optimization
+13.2.4 External APIs
+Google Maps for location services
+OpenWeatherMap for weather information
+Google Translate for language translation
+Includes API key management and rate limiting
+13.2.5 Japan Travel Knowledge Base
+Stores essential Japan travel information
+Includes attractions, customs, transportation
+Contains pre-translated common phrases
+Provides structured data for LLM context
+13.3 Data Flow
+User sends message via Telegram
+Telegram Bot interface receives and processes message
+FastAPI backend analyzes request and determines required services
+If needed, external APIs are queried for information
+Japan travel knowledge base provides relevant context
+LLM service generates appropriate response based on all inputs
+Response is formatted and returned via Telegram Bot interface
+Conversation context is updated for future interactions
+14. Appendix
+14.1 Technology Stack
+Backend Framework: FastAPI
+Programming Language: Python 3.10+
+Bot Framework: python-telegram-bot
+LLM Options: Ollama (local), Hugging Face/OpenAI (cloud)
+Database: SQLite (development), PostgreSQL (optional for production)
+External APIs: Google Maps, OpenWeatherMap, Google Cloud Translation
+Hosting Options: Railway, Fly.io, Oracle Cloud Free Tier
+Containerization: Docker (optional)
+Monitoring: Basic logging with Sentry free tier
+14.2 API Usage Estimates
+Google Maps API: ~500 requests per day (within free $200 credit)
+OpenWeatherMap API: ~100 requests per day (within free tier)
+Google Cloud Translation API: ~200 requests per day (within free tier)
+LLM API (if cloud): ~300 requests per day (cost-dependent on provider)
+14.3 Recommended Open-Source Models
+Llama 3 (8B) via Ollama
+Mistral 7B via Ollama
+Gemma 2B or 7B via Ollama
+BERT-based models for specific classification tasks
+14.4 Sample Prompt Templates
+General Travel Assistant Prompt
+You are a knowledgeable Japan travel assistant helping with a honeymoon trip.
+Use the following pieces of context to answer the question at the end.
+If you don't know something, acknowledge that and suggest seeking information from a local source when in Japan.
 
-### LLM Integration
-- Integrate with both local (Ollama) and cloud-based LLM services
-- Maintain conversation context across multiple interactions
-- Optimize prompts to provide accurate Japan travel information
+Context on Japan travel:
+{japan_context}
 
-### Location Services
-- Integrate with Google Maps API for location-based assistance
-- Provide directions, nearby place recommendations, and transportation guidance
-- Support location sharing for immediate contextual assistance
+Current weather information:
+{weather_info}
 
-### Weather Information
-- Integrate with OpenWeatherMap API for current conditions and forecasts
-- Provide weather-based activity recommendations
-- Alert users to severe weather events that may impact travel plans
+Previous conversation:
+{chat_history}
 
-### Translation Services
-- Implement both API-based translation and pre-translated phrase database
-- Help users communicate in Japanese during their travels
-- Support essential phrases for common tourist interactions
+User location: {user_location}
 
-### Japan Travel Knowledge Base
-- Create and populate a database with essential Japan travel information
-- Include details about cities, attractions, transportation, customs, and cuisine
-- Support queries about cultural norms and local practices
+Question: {input}
 
-### Emergency Assistance
-- Provide emergency contact information and guidance
-- Support emergency translation for medical or safety situations
-- Guide users to appropriate resources in case of emergencies
+Response:
+Translation Prompt
+Translate the following English phrase to Japanese.
+Provide both Japanese characters and a phonetic pronunciation guide.
+If this is a common travel phrase, include any cultural context or usage tips.
 
-### User Preferences
-- Track and utilize user preferences for personalized recommendations
-- Remember previous queries and choices to provide contextual assistance
-- Support different travel styles and interests
+Phrase to translate: {input_phrase}
+Location Recommendation Prompt
+The user is currently in {location} and is interested in {interest_type}.
+Recommend 3-5 nearby attractions or points of interest that match these preferences.
+For each recommendation, provide:
+1. Name of the location
+2. Brief description (1-2 sentences)
+3. Why it's worth visiting
+4. Practical information (typical visit duration, cost if applicable, best time to visit)
 
-## Technical Requirements
+Make recommendations that are particularly relevant given the current weather: {weather_condition}
+14.5 Glossary
+LLM: Large Language Model
+API: Application Programming Interface
+MVP: Minimum Viable Product
+POC: Proof of Concept
+FastAPI: Python web framework for building APIs
+Ollama: Tool for running LLMs locally
+Telegram Bot: Automated interface for the Telegram messaging platform
+Google Maps API: Suite of APIs for location-based services
+OpenWeatherMap: API for weather data
+Token: Unit of text processed by an LLM
+Context Window: Amount of text an LLM can consider at once
+Prompt Engineering: Crafting effective instructions for LLMs
+15. Revision History
+Version	Date	Description	Author
+0.1	2025-05-16	Initial draft	[Your Name]
+1.0	2025-05-16	Final PRD	[Your Name]
+End of Document
 
-### Backend
-- Implement with FastAPI for efficient API development
-- Set up appropriate middleware and error handling
-- Optimize for performance and responsiveness
-
-### External API Integrations
-- Google Maps API for location services
-- OpenWeatherMap API for weather information
-- Translation APIs for language assistance
-- LLM services for natural language understanding
-
-### Caching & Optimization
-- Implement caching strategies to minimize external API calls
-- Optimize LLM usage to reduce costs and improve response times
-- Ensure the application remains responsive even under load
-
-### Testing & Deployment
-- Implement comprehensive testing across all components
-- Configure for deployment to a production environment
-- Create monitoring and logging for production operation
-
-### Documentation
-- Provide comprehensive setup and usage documentation
-- Document the architecture and API references
-- Include troubleshooting and maintenance guides 
